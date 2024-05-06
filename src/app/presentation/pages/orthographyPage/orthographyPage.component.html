@@ -1,9 +1,11 @@
 <div class="chat-container">
   <div class="chat-messages">
     <div class="grid gap-y-2">
-      <app-chat-mesage [text]="'Wololo!'" [isUser]="false" [iconLetter]="'G'"></app-chat-mesage>
-      <app-chat-mesage [text]="'Wololo!'" [isUser]="true" [iconLetter]="'A'"></app-chat-mesage>
-
+      <app-chat-mesage [text]="'Wololo!'" [isUser]="false" [iconLetter]="'G'" />
+      <app-chat-mesage [text]="'Wololo!'" [isUser]="true" [iconLetter]="'A'" />
+      <app-typing-loader />
     </div>
   </div>
+
+  <app-text-message-box placeholder="Escribe aquí lo que desees" (onMessage)="handleMessage($event)"/>
 </div>
