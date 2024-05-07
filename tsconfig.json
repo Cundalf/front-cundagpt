@@ -4,7 +4,15 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "paths": {
-      "@components/*": ["./src/app/presentation/components/*"]
+      "@components/*": [
+        "./src/app/presentation/components/*"
+      ],
+      "@use-cases/*": [
+        "./src/app/core/use-cases/*"
+      ],
+      "@interfaces/*": [
+        "./src/app/interfaces/*"
+      ],
     },
     "strict": true,
     "noImplicitOverride": true,

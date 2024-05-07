@@ -1,15 +1,28 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { ChatMesageComponent, TextMessageBoxComponent, TextMessageBoxEvent, TextMessageBoxFileComponent, TextMessageBoxSelectComponent, TextMessageEvent, TypingLoaderComponent } from '@components/index';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { Message } from '../../../interfaces';
 import { OpenAiService } from '../../services/openai.service';
+import {
+  ChatMessageComponent,
+  GptMessageOrthographyComponent,
+  TextMessageBoxComponent,
+  TextMessageBoxFileComponent,
+  TextMessageBoxSelectComponent,
+  TypingLoaderComponent,
+} from '@components/index';
 
 @Component({
   selector: 'app-orthography-page',
   standalone: true,
   imports: [
     CommonModule,
-    ChatMesageComponent,
+    ChatMessageComponent,
+    GptMessageOrthographyComponent,
     TypingLoaderComponent,
     TextMessageBoxComponent,
     TextMessageBoxFileComponent,
@@ -19,19 +32,32 @@ import { OpenAiService } from '../../services/openai.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class OrthographyPageComponent {
-  public messages = signal<Message[]>([{ text: 'Hola Mundo', isGpt: false }]);
+  public messages = signal<Message[]>([]);
   public isLoading = signal(false);
   public openAiService = inject(OpenAiService);
 
   handleMessage(prompt: string) {
-    console.log({ prompt });
-  }
+    this.isLoading.set(true);
 
-  handleMessageWithFile({ prompt, file }: TextMessageEvent) {
-    console.log({ prompt, file });
-  }
+    this.messages.update((prev) => [
+      ...prev,
+      {
+        isGpt: false,
+        text: prompt,
+      },
+    ]);
 
-  handleMessageWithSelect(event: TextMessageBoxEvent) {
-    console.log(event);
+    this.openAiService.checkOrthography(prompt).subscribe((resp) => {
+      this.isLoading.set(false);
+
+      this.messages.update((prev) => [
+        ...prev,
+        {
+          isGpt: true,
+          text: resp.message,
+          info: resp,
+        },
+      ]);
+    });
   }
 }

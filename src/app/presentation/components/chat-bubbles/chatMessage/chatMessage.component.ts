@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-chat-mesage',
+  selector: 'app-chat-message',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './chatMesage.component.html',
+  templateUrl: './chatMessage.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChatMesageComponent {
+export class ChatMessageComponent {
   @Input({ required: true })
   public isUser: boolean = false;
 

@@ -2,13 +2,14 @@
   <div class="chat-messages">
 
     <div class="grid gap-y-2">
-      <app-chat-mesage [text]="'Escribe el texto que quieres que revise.'" [isUser]="false" [iconLetter]="'G'" />
+      <app-chat-message [text]="'Escribe el texto que quieres que revise.'" [isUser]="false" [iconLetter]="'G'" />
 
       @for (message of messages(); track $index) {
         @if( message.isGpt ) {
-          <app-chat-mesage [text]="message.text" [isUser]="false" [iconLetter]="'G'" />
+          <app-gpt-message-orthography [text]="message.text" [errors]="message.info!.errors" [text]="message.text"
+            [userScore]="message.info!.userScore" />
         } @else {
-          <app-chat-mesage [text]="message.text" [isUser]="true" [iconLetter]="'Y'" />
+          <app-chat-message [text]="message.text" [isUser]="true" [iconLetter]="'Y'" />
         }
       }
 
@@ -19,18 +20,7 @@
     </div>
   </div>
 
-  <!-- MessageBox -->
-  <!-- <app-text-message-box
-    placeholder="Escribe aquí lo que deseas"
-    (onMessage)="handleMessage($event)"
-  /> -->
-
-  <!-- <app-text-message-box-file
-    placeholder="Escribe aquí lo que deseas"
-    (onMessage)="handleMessageWithFile($event)"
-  /> -->
-
-  <app-text-message-box-select placeholder="Escribe aquí lo que deseas"
-    [options]="[{ id: '1', text: 'Uno' }, { id: '2', text: 'Dos' }]" (onMessage)="handleMessageWithSelect($event)" />
+<app-text-message-box placeholder="Escribe aquí lo que deseas" (onMessage)="handleMessage($event)"
+  [disableCorrections]="true" />
 
 </div>

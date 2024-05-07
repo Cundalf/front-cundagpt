@@ -1,0 +1,14 @@
+<div class="p-3 rounded-lg" [ngClass]="{ 'col-start-1 col-end-9' : isUser, 'col-start-6 col-end-12' : !isUser }">
+  <div class="flex"
+    [ngClass]="{ 'items-center justify-start flex-row-reverse' : isUser, 'flex-row items-start' : !isUser }">
+    <div class="flex items-center justify-center h-10 w-10 rounded-full flex-shrink-0"
+      [ngClass]="{ 'bg-indigo-500' : isUser, 'bg-green-600' : !isUser }">
+      {{ iconLetter }}
+    </div>
+
+    <div class="relative text-sm bg-black bg-opacity-25 pt-3 pb-2 px-4 shadow rounded-xl"
+      [ngClass]="{ 'mr-3' : isUser, 'ml-3' : !isUser }">
+      {{ text }}
+    </div>
+  </div>
+</div>
