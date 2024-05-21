@@ -1,1 +1,28 @@
-<p>prosConsStreamPage works!</p>,
+<div class="chat-container">
+  <div class="chat-messages">
+
+    <div class="grid gap-y-2">
+
+      <!-- Chat Messages -->
+      <app-chat-message text="¿Qué deseas comparar? Te dare la respuesta en la medida que la tenga." [isUser]="false" [iconLetter]="'G'" />
+
+      @for (message of messages(); track message.text) {
+        @if( message.isGpt ) {
+          <app-chat-message [text]="message.text" [isUser]="false" [iconLetter]="'G'" />
+        } @else {
+          <app-chat-message [text]="message.text" [isUser]="true" [iconLetter]="'Y'" />
+        }
+      }
+
+      @if (isLoading()) {
+        <app-typing-loader />
+      }
+
+
+    </div>
+  </div>
+
+  <!-- MessageBox -->
+  <app-text-message-box placeholder="Escribe aquí lo que deseas" (onMessage)="handleMessage($event)" />
+
+</div>

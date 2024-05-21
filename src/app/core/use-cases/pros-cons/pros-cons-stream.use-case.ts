@@ -1,4 +1,4 @@
-import { environment } from "../../../../environments/environment";
+import { environment } from '../../../../environments/environment';
 
 export async function* prosConsStreamUseCase(
   prompt: string,
@@ -42,6 +42,7 @@ export async function* prosConsStreamUseCase(
 
     return text;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }
