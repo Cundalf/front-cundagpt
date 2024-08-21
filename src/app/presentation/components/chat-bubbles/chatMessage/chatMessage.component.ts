@@ -18,4 +18,6 @@ export class ChatMessageComponent {
 
   @Input({ required: true })
   public text: string = '';
+
+  @Input() audioUrl?: string;
 }
