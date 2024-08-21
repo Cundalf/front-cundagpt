@@ -75,6 +75,18 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'image-to-text',
+        loadComponent: () =>
+          import(
+            './presentation/pages/imageToTextPage/imageToTextPage.component'
+          ),
+        data: {
+          icon: 'fa-solid fa-file-image',
+          title: 'Imagen a texto',
+          description: 'Describir lo que hay en una imagen',
+        },
+      },
+      {
         path: 'image-generation',
         loadComponent: () =>
           import(
