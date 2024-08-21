@@ -8,3 +8,10 @@ Pasos para ejecutar en dev
 
 ## Version
 Desarrollado en Angular version 17.3.5.
+
+## Pendientes
+
+- Bloquear acciones del usuario mientras se procesa la petición.
+- Mensajes de errores amigables al usuario al fallar una petición.
+- Corregir duplicado de chats en Asistente.
+- Corregir Responsive.
