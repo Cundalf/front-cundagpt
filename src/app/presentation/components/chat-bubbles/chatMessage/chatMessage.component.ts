@@ -20,4 +20,6 @@ export class ChatMessageComponent {
   public text: string = '';
 
   @Input() audioUrl?: string;
+
+  @Input() imageInfo?: { url: string; alt: string };
 }

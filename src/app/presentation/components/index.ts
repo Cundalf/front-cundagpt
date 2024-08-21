@@ -1,6 +1,7 @@
 // Chat Bubbles
 export * from './chat-bubbles/gptMessageOrthography/gptMessageOrthography.component';
 export * from './chat-bubbles/chatMessage/chatMessage.component';
+export * from './chat-bubbles/gptMessageEditableImage/gptMessageEditableImage.component';
 
 // Menu
 export * from './sidebarMenuItem/sidebarMenuItem.component';
