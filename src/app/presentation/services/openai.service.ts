@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createThreadUseCase, orthographyUseCase, postQuestionUseCase, prosConsStreamUseCase, prosConsUseCase, translateTextUseCase } from '@use-cases/index';
+import { audioToTextUseCase, createThreadUseCase, orthographyUseCase, postQuestionUseCase, prosConsStreamUseCase, prosConsUseCase, translateTextUseCase } from '@use-cases/index';
 
 import { from, Observable, of, tap } from 'rxjs';
 import { textToAudioUseCase } from '../../core/use-cases/audios/text-to-audio.use-case';
@@ -40,5 +40,9 @@ export class OpenAiService {
 
   postQuestion(threadId: string, question: string) {
     return from(postQuestionUseCase(threadId, question));
+  }
+
+  audioToText(file: File, prompt?: string) {
+    return from(audioToTextUseCase(file, prompt));
   }
 }
